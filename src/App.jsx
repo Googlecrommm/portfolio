@@ -16,45 +16,61 @@ const NAV_LINKS = [
 const SKILLS = [
   {
     icon: Code2,
-    title: "Languages",
+    title: "Java",
     description:
-      "Java (17+), JavaScript, SQL, HTML5, and CSS3 — the core languages I use to build backend logic and the pages that connect to it.",
+      "Java 17+ for backend application development, with JavaScript, SQL, HTML5, and CSS3 for supporting web experiences.",
     plaque: "bg-[#F4F2ED]",
     iconColor: "text-orange-600",
   },
   {
     icon: Leaf,
-    title: "Backend",
+    title: "Spring Boot",
     description:
-      "Spring Boot, Spring Security, Spring Data JPA, Hibernate, JWT, and Swagger UI for building, securing, and documenting REST APIs.",
+      "Spring Boot for building backend systems and REST APIs, with DTOs, Bean Validation, and structured Exception Handling.",
     plaque: "bg-[#6DB33F]",
     iconColor: "text-white",
   },
   {
     icon: Database,
-    title: "Databases",
+    title: "Security & Persistence",
     description:
-      "MySQL, PostgreSQL, Firebase, and Redis for storing, querying, and caching application data.",
+      "Spring Security, JWT (JSON Web Token), Spring Data JPA, and Hibernate for authentication, authorization, and data access.",
     plaque: "bg-[#232326]",
     iconColor: "text-[#2196D8]",
     iconScale: "scale-110",
   },
   {
     icon: Wrench,
-    title: "Tools",
+    title: "REST APIs",
     description:
-      "Git, GitHub, Postman, MySQL Workbench, and Docker for version control, API testing, and local development.",
+      "REST API development and documentation with Swagger/OpenAPI, including API testing with Postman.",
     plaque: "bg-[#232326]",
     iconColor: "text-[#F05033]",
   },
   {
     icon: FlaskConical,
-    title: "Testing",
+    title: "Databases & Testing",
     description:
-      "JUnit 5 and Mockito for writing and running unit tests against backend services.",
+      "MySQL, PostgreSQL, Firebase, and Redis, with JUnit 5, Mockito, MockMvc, Integration Testing, and API Testing.",
     plaque: "bg-[#232326]",
     iconColor: "text-teal-400",
     iconScale: "scale-110",
+  },
+  {
+    icon: Wrench,
+    title: "Development Tools",
+    description:
+      "Git, GitHub, Docker, MySQL Workbench, IntelliJ IDEA, Linux, and Postman for everyday development workflows.",
+    plaque: "bg-[#232326]",
+    iconColor: "text-[#F05033]",
+  },
+  {
+    icon: Code2,
+    title: "Frontend",
+    description:
+      "ReactJS, JavaScript, HTML5, CSS3, and Tailwind for building frontend interfaces when working across the stack.",
+    plaque: "bg-[#F4F2ED]",
+    iconColor: "text-orange-600",
   },
 ];
 
@@ -62,16 +78,16 @@ const PROJECTS = [
   {
     title: "Scheduling Management System",
     description:
-      "Replaced Divine Grace Medical Center's manual, Excel-based scheduling with automated conflict detection, patient information management, and activity logs for monitoring system activity. Deployed on a local network to restrict access to authorized hospital employees and protect patient data.",
+      "Developed a Scheduling Management System for Divine Grace Medical Center to replace manual Excel-based scheduling and eliminate conflicting schedules. The system includes automated conflict detection, patient information management, activity logs, a user-friendly interface, local network deployment, and restricted access for authorized hospital employees.",
     image: schedulingImage,
-    tags: ["Java", "Spring Boot", "MySQL"],
+    tags: ["Java", "Spring Boot", "MySQL", "REST APIs"],
   },
   {
     title: "Attendance Management System",
     description:
-      "RFID-based attendance system for an elementary school that automatically records student attendance and sends SMS alerts to parents, replacing a manual pen-and-paper process. Built the backend to process RFID records, manage student information, and trigger notifications.",
+      "Developed an RFID-based Attendance Management System for an elementary school to replace the time-consuming pen-and-paper process. The backend processes RFID attendance records, manages student information, tracks attendance, and sends automated SMS notifications to parents about their children's attendance and whereabouts.",
     image: attendanceImage,
-    tags: ["Java", "Spring Boot", "RFID", "SMS API"],
+    tags: ["Java", "Spring Boot", "RFID", "SMS notifications"],
   },
 ];
 
@@ -81,8 +97,9 @@ const EXPERIENCE = [
     org: "Divine Grace Medical Center",
     period: "",
     bullets: [
-      "Developed a Scheduling Management System for hospital departments to organize patient schedules and prevent scheduling conflicts.",
-      "Deployed the system on a local network to restrict access to authorized employees and enhance database security.",
+      "Developed a Scheduling Management System for the departments of Divine Grace Medical Center to organize patient schedules and prevent scheduling conflicts.",
+      "Deployed the system on a local network to restrict access to authorized hospital employees and enhance database security.",
+      "Built functionality for automated conflict detection, patient information management, and activity logs to replace manual Excel-based scheduling.",
     ],
   },
   {
@@ -90,26 +107,18 @@ const EXPERIENCE = [
     org: "Attendance Management System",
     period: "",
     bullets: [
-      "Led a development team of five members to keep the project structured, efficient, and on schedule.",
-      "Planned and wrote project documentation, user manuals, and system diagrams to keep the project's scope and workflow clear to clients.",
-      "Developed the backend of an Attendance Management System for an elementary school, including SMS alerts to parents about attendance and whereabouts.",
+      "Led a development team of five members to ensure a structured, efficient, and timely development process.",
+      "Planned and created project documentation, user manuals, and system diagrams to maintain a clear project scope and explain the system's functionality and workflow to clients.",
+      "Developed the backend of an RFID-based Attendance Management System for an elementary school to process attendance records, manage student information, track attendance, and provide automated SMS alerts to parents.",
     ],
   },
 ];
 
 const EDUCATION = {
   degree: "Bachelor of Science in Information Technology",
-  school: "Cavite State University — General Trias City Campus",
-  period: "2025 — 2026",
+  school: "Cavite State University - General Trias City Campus",
+  period: "2025 - 2026",
 };
-
-const CERTIFICATES = [
-  {
-    title: "Charting IT Project Success with Agile and Scrum Methodologies",
-    issuer: "LinkedIT · West Visayas State University, DEVCON",
-    date: "October 5, 2024",
-  },
-];
 
 const CONTACT = {
   location: "General Trias City, Cavite",
@@ -152,7 +161,7 @@ function scrollToSection(id) {
 function Navbar() {
   return (
     <nav
-      className="w-full flex items-center justify-between px-6 py-3
+      className="sticky top-0 z-50 w-full flex items-center justify-between px-6 py-3
                  bg-[linear-gradient(to_right,#523453_0%,#26282B_45%)]"
     >
       <div className="flex items-center gap-3">
@@ -204,18 +213,20 @@ function ProfileSection() {
 
         <div className="flex flex-col gap-5">
           <h3 className="text-2xl md:text-3xl text-white">
-            I'm <span className="font-bold">Cromwell Naval</span>
+            I'm Cromwell Naval, a <span className="font-bold">Java Backend Developer</span>
           </h3>
 
           <p className="text-lg text-gray-200 max-w-2xl">
-            I'm a Java Backend Developer based in {CONTACT.location}, focused on
-            building reliable and maintainable web applications and APIs.
+            I'm based in {CONTACT.location}, focused on building backend systems
+            and REST APIs with Java and Spring Boot. I am targeting junior Java
+            backend and software development roles.
           </p>
 
           <p className="text-gray-300 max-w-2xl leading-relaxed">
-            I primarily work with Java and Spring Boot, with experience in REST
-            API development, Spring Data JPA, authentication, database
-            management, and MySQL.
+            My experience includes Spring Security, Spring Data JPA, Hibernate,
+            JWT, database management, testing, Docker, and related development
+            tools. I also work with ReactJS, JavaScript, HTML5, CSS3, and
+            Tailwind when frontend or full-stack work is needed.
           </p>
 
           <div className="flex items-center gap-3 mt-2">
@@ -375,22 +386,10 @@ function EducationSection() {
     <section id="education" className="max-w-7xl mx-auto px-6 md:px-10 pb-16 scroll-mt-24">
       <h2 className="text-3xl font-bold text-white mb-8">@Education</h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="bg-[#605F5F] rounded-2xl p-6">
-          <h4 className="text-lg font-semibold text-white mb-1">{EDUCATION.degree}</h4>
-          <p className="text-sm text-gray-300 mb-1">{EDUCATION.school}</p>
-          <p className="text-xs text-gray-400">{EDUCATION.period}</p>
-        </div>
-
-        <div className="bg-[#605F5F] rounded-2xl p-6 flex flex-col gap-4">
-          {CERTIFICATES.map((cert) => (
-            <div key={cert.title}>
-              <h4 className="text-base font-semibold text-white mb-1">{cert.title}</h4>
-              <p className="text-sm text-gray-300 mb-1">{cert.issuer}</p>
-              {cert.date ? <p className="text-xs text-gray-400">{cert.date}</p> : null}
-            </div>
-          ))}
-        </div>
+      <div className="bg-[#605F5F] rounded-2xl p-6 max-w-2xl">
+        <h4 className="text-lg font-semibold text-white mb-1">{EDUCATION.degree}</h4>
+        <p className="text-sm text-gray-300 mb-1">{EDUCATION.school}</p>
+        <p className="text-xs text-gray-400">{EDUCATION.period}</p>
       </div>
     </section>
   );
